@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ledger — Task Manager</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app__header">
+      <div class="app__header-top">
+        <div>
+          <h1>Ledger</h1>
+          <p class="app__subtitle">A quiet place to keep track of what's next.</p>
+        </div>
+        <button class="icon-btn" id="themeToggle" title="Toggle theme">🌙</button>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-bar__fill" id="progressFill"></div>
+      </div>
+      <p class="progress-label" id="progressLabel">0 of 0 tasks complete</p>
+    </header>
+
+    <form class="composer" id="composer">
+      <input
+        type="text"
+        id="taskInput"
+        class="composer__input"
+        placeholder="What needs doing?"
+        autocomplete="off"
+        maxlength="140"
+      />
+      <select id="priorityInput" class="composer__priority">
+        <option value="low">Low</option>
+        <option value="medium" selected>Medium</option>
+        <option value="high">High</option>
+      </select>
+      <input type="date" id="dueDateInput" class="composer__date" />
+      <button type="submit" class="composer__submit">Add task</button>
+    </form>
+
+    <div class="toolbar">
+      <input type="search" id="searchInput" class="toolbar__search" placeholder="🔍 Search tasks…" />
+      <div class="toolbar__filters" id="filterButtons">
+        <button class="filter-btn is-active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="high">High priority</button>
+        <button class="filter-btn" data-filter="overdue">Overdue</button>
+      </div>
+    </div>
+
+    <div class="board">
+      <section class="column" aria-labelledby="pendingHeading">
+        <div class="column__head">
+          <h2 id="pendingHeading">Pending</h2>
+          <span class="count" id="pendingCount">0 pending</span>
+        </div>
+        <ul class="task-list" id="pendingList"></ul>
+        <p class="empty-state" id="pendingEmpty">Nothing pending — add a task above to get started.</p>
+      </section>
+
+      <section class="column" aria-labelledby="completedHeading">
+        <div class="column__head">
+          <h2 id="completedHeading">Completed</h2>
+          <span class="count" id="completedCount">0 completed</span>
+        </div>
+        <ul class="task-list" id="completedList"></ul>
+        <p class="empty-state" id="completedEmpty">Nothing finished yet. It'll show up here once you check it off.</p>
+      </section>
+    </div>
+  </div>
+
+  <template id="taskTemplate">
+    <li class="task" data-id="" draggable="true">
+      <span class="task__drag-handle" title="Drag to reorder">⠿</span>
+      <label class="task__check">
+        <input type="checkbox" class="task__checkbox" />
+        <span class="task__checkmark"></span>
+      </label>
+      <div class="task__body">
+        <div class="task__top-row">
+          <p class="task__text"></p>
+          <span class="priority-chip"></span>
+        </div>
+        <input type="text" class="task__edit-input" maxlength="140" />
+        <span class="task__meta"></span>
+      </div>
+      <div class="task__actions">
+        <button class="task__btn task__btn--edit" title="Edit">Edit</button>
+        <button class="task__btn task__btn--delete" title="Delete">Delete</button>
+      </div>
+    </li>
+  </template>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
