@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard — Keyhole</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="dash">
+    <div class="dash__topbar">
+      <div class="dash__avatar-row">
+        <div class="avatar-circle" id="avatarCircle">?</div>
+        <div class="dash__welcome">
+          <h1 id="welcomeHeading">Welcome back</h1>
+          <p id="welcomeSub">Here's your session at a glance.</p>
+        </div>
+      </div>
+      <button class="btn-logout" id="logoutBtn">Log out</button>
+    </div>
+
+    <div class="dash__card">
+      <h2>Session details</h2>
+      <div class="dash__meta-row"><span>Username</span><span id="metaUsername">—</span></div>
+      <div class="dash__meta-row"><span>Email</span><span id="metaEmail">—</span></div>
+      <div class="dash__meta-row"><span>Logged in at</span><span id="metaLoginAt">—</span></div>
+      <div class="dash__meta-row"><span>Session storage</span><span id="metaStorage">—</span></div>
+
+      <div class="widget-grid">
+        <div class="widget">
+          <div class="widget__label">Session duration</div>
+          <div class="widget__value" id="sessionDuration">0m 0s</div>
+        </div>
+        <div class="widget">
+          <div class="widget__label">Account created</div>
+          <div class="widget__value" id="accountCreated">—</div>
+        </div>
+        <div class="widget">
+          <div class="widget__label">Auth method</div>
+          <div class="widget__value">SHA-256</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script>
+    Auth.requireAuth('login.html');
+    const session = Auth.getSession();
+
+    if (session) {
+      const avatar = Auth.initialsAvatar(session.username);
+      const avatarEl = document.getElementById('avatarCircle');
+      avatarEl.textContent = avatar.initials;
+      avatarEl.style.background = avatar.color;
+
+      document.getElementById('welcomeHeading').textContent = `Welcome, ${session.username}`;
+      document.getElementById('metaUsername').textContent = session.username;
+      document.getElementById('metaEmail').textContent = session.email;
+      document.getElementById('metaLoginAt').textContent = new Date(session.loginAt).toLocaleString();
+      document.getElementById('metaStorage').textContent = localStorage.getItem('authdemo.session.v1')
+        ? 'localStorage (Remember me was checked)'
+        : 'sessionStorage (clears when tab closes)';
+
+      // Look up createdAt from the stored user record for a small extra widget.
+      try {
+        const users = JSON.parse(localStorage.getItem('authdemo.users.v1')) || [];
+        const user = users.find((u) => u.username === session.username);
+        if (user?.createdAt) {
+          document.getElementById('accountCreated').textContent = new Date(user.createdAt).toLocaleDateString();
+        }
+      } catch (e) { /* ignore */ }
+
+      // Live-ticking session duration widget.
+      function tick() {
+        const seconds = Math.floor((Date.now() - session.loginAt) / 1000);
+        const m = Math.floor(seconds / 60);
+        const s = seconds % 60;
+        document.getElementById('sessionDuration').textContent = `${m}m ${s}s`;
+      }
+      tick();
+      setInterval(tick, 1000);
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      Auth.logout();
+      window.location.href = 'login.html';
+    });
+  </script>
+</body>
+</html>
