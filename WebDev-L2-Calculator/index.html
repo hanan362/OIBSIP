@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Slab — Scientific Calculator</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <main class="calc" role="application" aria-label="Calculator">
+      <header class="calc__header">
+        <span class="calc__brand">SLAB</span>
+        <div class="calc__header-actions">
+          <button class="icon-btn" id="historyToggle" title="Toggle history">🕘</button>
+          <button class="icon-btn" id="themeToggle" title="Toggle theme">🌙</button>
+        </div>
+      </header>
+
+      <section class="calc__display" aria-live="polite">
+        <div class="calc__memory-flag" id="memoryFlag">M</div>
+        <div class="calc__expression" id="expression"></div>
+        <div class="calc__result-row">
+          <div class="calc__result" id="result">0</div>
+          <button class="calc__copy" id="copyBtn" title="Copy result">⧉</button>
+        </div>
+      </section>
+
+      <section class="calc__pad" id="pad">
+        <button class="key key--mem" data-action="mc">MC</button>
+        <button class="key key--mem" data-action="mr">MR</button>
+        <button class="key key--mem" data-action="mplus">M+</button>
+        <button class="key key--mem" data-action="mminus">M−</button>
+
+        <button class="key key--sci" data-action="sqrt">√x</button>
+        <button class="key key--sci" data-action="square">x²</button>
+        <button class="key key--sci" data-action="inverse">1/x</button>
+        <button class="key key--op" data-op="÷">÷</button>
+
+        <button class="key key--num" data-num="7">7</button>
+        <button class="key key--num" data-num="8">8</button>
+        <button class="key key--num" data-num="9">9</button>
+        <button class="key key--op" data-op="×">×</button>
+
+        <button class="key key--num" data-num="4">4</button>
+        <button class="key key--num" data-num="5">5</button>
+        <button class="key key--num" data-num="6">6</button>
+        <button class="key key--op" data-op="−">−</button>
+
+        <button class="key key--num" data-num="1">1</button>
+        <button class="key key--num" data-num="2">2</button>
+        <button class="key key--num" data-num="3">3</button>
+        <button class="key key--op" data-op="+">+</button>
+
+        <button class="key key--util" data-action="clear">C</button>
+        <button class="key key--num" data-num="0">0</button>
+        <button class="key key--num" data-num=".">.</button>
+        <button class="key key--util" data-action="backspace">⌫</button>
+
+        <button class="key key--util" data-action="percent">%</button>
+        <button class="key key--util" data-action="sign">±</button>
+        <button class="key key--equals" data-action="equals" style="grid-column: span 2;">=</button>
+      </section>
+    </main>
+
+    <aside class="history-panel" id="historyPanel">
+      <div class="history-panel__head">
+        <h2>History</h2>
+        <button class="icon-btn" id="clearHistory" title="Clear history">🗑</button>
+      </div>
+      <ul class="history-list" id="historyList"></ul>
+      <p class="history-empty" id="historyEmpty">No calculations yet.</p>
+    </aside>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
