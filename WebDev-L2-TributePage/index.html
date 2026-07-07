@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ada Lovelace — The First Programmer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero__inner">
+      <p class="hero__eyebrow">1815 — 1852</p>
+      <h1 class="hero__title">Ada Lovelace</h1>
+      <p class="hero__tagline">She saw the machine could do more than count — it could create.</p>
+    </div>
+    <div class="hero__figure" role="img" aria-label="Illustration of interlocking gears representing the Analytical Engine, with a punch-card motif referencing Ada Lovelace's algorithm">
+      <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="180" cy="180" r="170" fill="none" stroke="#c9a05c" stroke-width="1" opacity="0.35"/>
+        <g transform="translate(180,180)">
+          <g class="gear gear--big">
+            <circle r="78" fill="none" stroke="#e7cfa3" stroke-width="2"/>
+            <circle r="18" fill="#e7cfa3"/>
+            <g id="teethBig">
+              <rect x="-6" y="-96" width="12" height="22" fill="#e7cfa3" transform="rotate(0)"/>
+              <rect x="-6" y="-96" width="12" height="22" fill="#e7cfa3" transform="rotate(45)"/>
+              <rect x="-6" y="-96" width="12" height="22" fill="#e7cfa3" transform="rotate(90)"/>
+              <rect x="-6" y="-96" width="12" height="22" fill="#e7cfa3" transform="rotate(135)"/>
+              <rect x="-6" y="-96" width="12" height="22" fill="#e7cfa3" transform="rotate(180)"/>
+              <rect x="-6" y="-96" width="12" height="22" fill="#e7cfa3" transform="rotate(225)"/>
+              <rect x="-6" y="-96" width="12" height="22" fill="#e7cfa3" transform="rotate(270)"/>
+              <rect x="-6" y="-96" width="12" height="22" fill="#e7cfa3" transform="rotate(315)"/>
+            </g>
+          </g>
+        </g>
+        <g transform="translate(96,250)">
+          <g class="gear gear--small">
+            <circle r="40" fill="none" stroke="#c9a05c" stroke-width="2"/>
+            <circle r="10" fill="#c9a05c"/>
+            <rect x="-5" y="-52" width="10" height="16" fill="#c9a05c" transform="rotate(0)"/>
+            <rect x="-5" y="-52" width="10" height="16" fill="#c9a05c" transform="rotate(60)"/>
+            <rect x="-5" y="-52" width="10" height="16" fill="#c9a05c" transform="rotate(120)"/>
+            <rect x="-5" y="-52" width="10" height="16" fill="#c9a05c" transform="rotate(180)"/>
+            <rect x="-5" y="-52" width="10" height="16" fill="#c9a05c" transform="rotate(240)"/>
+            <rect x="-5" y="-52" width="10" height="16" fill="#c9a05c" transform="rotate(300)"/>
+          </g>
+        </g>
+        <g transform="translate(270,100)">
+          <g class="gear gear--small2">
+            <circle r="30" fill="none" stroke="#c9a05c" stroke-width="2"/>
+            <circle r="8" fill="#c9a05c"/>
+            <rect x="-4" y="-40" width="8" height="14" fill="#c9a05c" transform="rotate(0)"/>
+            <rect x="-4" y="-40" width="8" height="14" fill="#c9a05c" transform="rotate(72)"/>
+            <rect x="-4" y="-40" width="8" height="14" fill="#c9a05c" transform="rotate(144)"/>
+            <rect x="-4" y="-40" width="8" height="14" fill="#c9a05c" transform="rotate(216)"/>
+            <rect x="-4" y="-40" width="8" height="14" fill="#c9a05c" transform="rotate(288)"/>
+          </g>
+        </g>
+        <!-- punch card holes referencing her algorithm notes -->
+        <g fill="#8a6a35" opacity="0.7">
+          <circle cx="70" cy="70" r="4"/>
+          <circle cx="90" cy="70" r="4"/>
+          <circle cx="70" cy="90" r="4"/>
+          <circle cx="290" cy="290" r="4"/>
+          <circle cx="310" cy="290" r="4"/>
+          <circle cx="290" cy="310" r="4"/>
+        </g>
+      </svg>
+    </div>
+  </header>
+
+  <main>
+    <section class="section section--bio reveal" id="bio">
+      <div class="section__inner">
+        <h2>The Enchantress of Numbers</h2>
+        <p>Augusta Ada King, Countess of Lovelace, was born in London in 1815, the only legitimate child of the poet Lord Byron. Her mother, wary of the instability she associated with poetry, steered Ada firmly toward mathematics and logic from an early age — a curriculum unusual for a woman of her time, and one that would shape the rest of her life.</p>
+        <p>In 1833, at just seventeen, Ada met Charles Babbage, the inventor of the Difference Engine and, later, the far more ambitious Analytical Engine. Babbage's machines were mechanical forerunners of the modern computer, and Ada was one of the very few people of her era who grasped not just how they worked, but what they might eventually mean.</p>
+        <p>Between 1842 and 1843, Ada translated an Italian paper on the Analytical Engine and appended her own notes — notes that ran three times longer than the original text. Buried in "Note G" was an algorithm to compute Bernoulli numbers using the Engine: a sequence of operations designed to be carried out by a machine. Many historians consider it the first published computer program.</p>
+        <p>More striking still was her insight that the Engine's operations weren't limited to numbers. If a symbol could represent a relationship, Ada reasoned, the machine could manipulate anything expressible in that form — music, images, language. She had described the general-purpose computer more than a century before one was built.</p>
+      </div>
+    </section>
+
+    <section class="section section--timeline reveal" id="timeline">
+      <div class="section__inner">
+        <h2>A Life in Milestones</h2>
+        <ol class="timeline">
+          <li class="timeline__item reveal-item">
+            <span class="timeline__year">1815</span>
+            <div>
+              <h3>Born in London</h3>
+              <p>Daughter of Lord Byron and Annabella Milbanke. Her parents separated within weeks of her birth, and she never met her father.</p>
+            </div>
+          </li>
+          <li class="timeline__item reveal-item">
+            <span class="timeline__year">1833</span>
+            <div>
+              <h3>Meets Charles Babbage</h3>
+              <p>Introduced at a party, she is shown a working prototype of his Difference Engine and is immediately captivated.</p>
+            </div>
+          </li>
+          <li class="timeline__item reveal-item">
+            <span class="timeline__year">1835</span>
+            <div>
+              <h3>Marries William King</h3>
+              <p>She becomes Countess of Lovelace when her husband is made an Earl in 1838.</p>
+            </div>
+          </li>
+          <li class="timeline__item reveal-item">
+            <span class="timeline__year">1843</span>
+            <div>
+              <h3>Publishes her Notes</h3>
+              <p>Her translation and annotations on Babbage's Analytical Engine are published, including what is now recognised as the first algorithm intended for machine execution.</p>
+            </div>
+          </li>
+          <li class="timeline__item reveal-item">
+            <span class="timeline__year">1852</span>
+            <div>
+              <h3>Dies at 36</h3>
+              <p>She passes away from uterine cancer, the same age at which her father died, and is buried beside him at his request.</p>
+            </div>
+          </li>
+          <li class="timeline__item reveal-item">
+            <span class="timeline__year">1980</span>
+            <div>
+              <h3>Ada programming language</h3>
+              <p>The U.S. Department of Defense names a newly standardised programming language "Ada" in her honour.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section--quote reveal" id="quote">
+      <div class="section__inner">
+        <blockquote>
+          <p>"That brain of mine is something more than merely mortal; as time will show."</p>
+          <cite>— Ada Lovelace, in a letter to her mother, 1843</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="section section--facts reveal" id="facts">
+      <div class="section__inner">
+        <h2>Did You Know?</h2>
+        <p class="facts__hint">Tap a card to reveal the fact.</p>
+        <div class="facts-grid">
+          <button class="fact-card" data-fact="1">
+            <span class="fact-card__front">🔢<br>The Algorithm</span>
+            <span class="fact-card__back">Her method for computing Bernoulli numbers on the Analytical Engine is widely regarded as the first published computer program — over a century before the first electronic computer existed.</span>
+          </button>
+          <button class="fact-card" data-fact="2">
+            <span class="fact-card__front">🎻<br>Byron's Daughter</span>
+            <span class="fact-card__back">Ada never knew her father, the poet Lord Byron — her parents separated within weeks of her birth. Ironically, she became famous for mathematics, the exact opposite of poetry, which her mother pushed her toward on purpose.</span>
+          </button>
+          <button class="fact-card" data-fact="3">
+            <span class="fact-card__front">💻<br>Ahead of Her Time</span>
+            <span class="fact-card__back">She theorised that the Engine could manipulate more than numbers — including music and images — describing the idea of a general-purpose computer more than 100 years before one was built.</span>
+          </button>
+          <button class="fact-card" data-fact="4">
+            <span class="fact-card__front">🏅<br>Lasting Honour</span>
+            <span class="fact-card__back">The U.S. Department of Defense named an entire programming language "Ada" after her in 1980, and Ada Lovelace Day is celebrated every October to honour women in STEM.</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--legacy reveal" id="legacy">
+      <div class="section__inner">
+        <h2>Why She Still Matters</h2>
+        <p>Ada Lovelace's notes went largely unnoticed in her own lifetime — the Analytical Engine was never completed, and her ideas waited nearly a century for hardware to catch up. But when computing did arrive, her central intuition proved exactly right: a machine that manipulates symbols according to rules isn't limited to arithmetic. It can be general-purpose. It can be creative.</p>
+        <p>Every October, Ada Lovelace Day celebrates women in STEM in her name — a fitting tribute to someone who saw further into the future of computing than almost anyone else alive at the time.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>A tribute page built for the Oasis Infobyte Web Development internship.</p>
+  </footer>
+
+  <script src="js/animations.js"></script>
+
+</body>
+</html>

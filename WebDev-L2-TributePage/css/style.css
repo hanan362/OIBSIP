@@ -1,0 +1,251 @@
+:root {
+  --parchment: #f4ecd8;
+  --parchment-2: #ece0c4;
+  --ink: #2a231a;
+  --brass: #b8863f;
+  --brass-dark: #7a5a26;
+  --deep: #1c1712;
+  --display: 'Fraunces', serif;
+  --body: 'Source Sans 3', sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: var(--body);
+  line-height: 1.7;
+}
+
+.hero {
+  background: radial-gradient(circle at 75% 30%, #2b2318 0%, var(--deep) 65%);
+  color: var(--parchment);
+  padding: 90px 8vw 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+  background-attachment: local;
+}
+
+.hero__inner { max-width: 560px; }
+
+.hero__eyebrow {
+  font-family: var(--body);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: var(--brass);
+  margin: 0 0 12px;
+}
+
+.hero__title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.8rem, 6vw, 4.6rem);
+  margin: 0 0 18px;
+  line-height: 1.02;
+}
+
+.hero__tagline {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: #d8c9a3;
+  max-width: 440px;
+  margin: 0;
+}
+
+.hero__figure {
+  width: 260px;
+  height: 260px;
+  flex-shrink: 0;
+}
+.hero__figure svg { width: 100%; height: 100%; }
+
+.gear--big { animation: spin 40s linear infinite; }
+.gear--small { animation: spin 22s linear infinite reverse; transform-origin: center; }
+.gear--small2 { animation: spin 16s linear infinite; transform-origin: center; }
+.gear { transition: transform 0.3s cubic-bezier(.2,.7,.3,1); }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gear--big, .gear--small, .gear--small2 { animation: none; }
+}
+
+.section { padding: 70px 8vw; }
+.section__inner { max-width: 720px; margin: 0 auto; }
+
+.section h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  margin: 0 0 28px;
+  color: var(--brass-dark);
+}
+
+.section--bio { background: var(--parchment); }
+.section--bio p { margin: 0 0 20px; font-size: 1.05rem; }
+
+.section--timeline { background: var(--parchment-2); }
+
+.timeline { list-style: none; margin: 0; padding: 0; }
+
+.timeline__item {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 24px;
+  padding: 22px 0;
+  border-top: 1px solid rgba(122,90,38,0.25);
+}
+.timeline__item:first-child { border-top: none; }
+
+.timeline__year {
+  font-family: var(--display);
+  font-weight: 700;
+  color: var(--brass);
+  font-size: 1.3rem;
+}
+
+.timeline__item h3 {
+  margin: 0 0 6px;
+  font-family: var(--display);
+  font-size: 1.15rem;
+}
+.timeline__item p { margin: 0; color: #4a4030; }
+
+.section--quote {
+  background: var(--deep);
+  color: var(--parchment);
+  text-align: center;
+}
+
+.section--quote blockquote {
+  margin: 0;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  line-height: 1.4;
+  border: none;
+}
+
+.section--quote cite {
+  display: block;
+  margin-top: 24px;
+  font-family: var(--body);
+  font-style: normal;
+  font-size: 0.9rem;
+  color: var(--brass);
+  letter-spacing: 0.04em;
+}
+
+.section--legacy { background: var(--parchment); }
+.section--legacy p { margin: 0 0 20px; font-size: 1.05rem; }
+
+.footer {
+  background: var(--deep);
+  color: #8a7c60;
+  text-align: center;
+  padding: 28px;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 640px) {
+  .hero { padding: 60px 6vw 50px; flex-direction: column-reverse; text-align: center; }
+  .hero__inner { max-width: 100%; }
+  .hero__tagline { margin-left: auto; margin-right: auto; }
+  .timeline__item { grid-template-columns: 1fr; gap: 4px; }
+  .section { padding: 50px 6vw; }
+}
+
+/* ---------- Scroll reveal ---------- */
+.reveal, .reveal-item {
+  opacity: 1; /* visible by default -- no-JS fallback */
+}
+@media (scripting: enabled) {
+  .reveal { opacity: 0; transform: translateY(28px); }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal-item { opacity: 0; transform: translateX(-16px); }
+  .reveal-item.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(.2,.7,.2,1);
+  }
+}
+
+/* ---------- Did You Know flip cards ---------- */
+.section--facts { background: var(--deep); color: var(--parchment); }
+.section--facts h2 { color: var(--parchment); }
+.facts__hint { color: var(--brass); font-size: 0.85rem; margin-top: -16px; margin-bottom: 28px; }
+
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  perspective: 1000px;
+}
+
+.fact-card {
+  position: relative;
+  height: 160px;
+  border: 1px solid rgba(184,134,63,0.4);
+  background: transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 0;
+  font-family: var(--body);
+}
+
+.fact-card__front, .fact-card__back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  transition: transform 0.6s cubic-bezier(.3,.9,.3,1);
+}
+
+.fact-card__front {
+  background: linear-gradient(160deg, #2b2318, #1c1712);
+  color: var(--parchment);
+  font-family: var(--display);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  transform: rotateY(0deg);
+}
+
+.fact-card__back {
+  background: var(--brass);
+  color: #1c1712;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  transform: rotateY(180deg);
+}
+
+.fact-card.is-flipped .fact-card__front { transform: rotateY(-180deg); }
+.fact-card.is-flipped .fact-card__back { transform: rotateY(0deg); }
+
+.fact-card:hover .fact-card__front { filter: brightness(1.15); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-item, .fact-card__front, .fact-card__back, .gear { transition: none !important; animation: none !important; }
+}
